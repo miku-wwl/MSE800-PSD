@@ -1,0 +1,75 @@
+<mxfile host="app.diagrams.net" modified="2026-05-03T00:00:00.000Z" agent="GitHub Copilot" version="24.7.8" type="device">
+  <diagram id="w3a2" name="Page-1">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1400" pageHeight="900" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <mxCell id="customer" value="&lt;b&gt;CUSTOMER&lt;/b&gt;&lt;br/&gt;customer_id (PK)&lt;br/&gt;full_name&lt;br/&gt;email&lt;br/&gt;phone&lt;br/&gt;kyc_status&lt;br/&gt;created_at" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="60" y="70" width="300" height="190" as="geometry" />
+        </mxCell>
+
+        <mxCell id="account" value="&lt;b&gt;ACCOUNT&lt;/b&gt;&lt;br/&gt;account_id (PK)&lt;br/&gt;customer_id (FK)&lt;br/&gt;base_currency_code (FK)&lt;br/&gt;balance&lt;br/&gt;status&lt;br/&gt;opened_at" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="60" y="310" width="300" height="190" as="geometry" />
+        </mxCell>
+
+        <mxCell id="currency" value="&lt;b&gt;CURRENCY&lt;/b&gt;&lt;br/&gt;currency_code (PK)&lt;br/&gt;currency_name&lt;br/&gt;symbol&lt;br/&gt;decimals&lt;br/&gt;country&lt;br/&gt;is_active" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="460" y="70" width="300" height="190" as="geometry" />
+        </mxCell>
+
+        <mxCell id="rate" value="&lt;b&gt;EXCHANGE_RATE&lt;/b&gt;&lt;br/&gt;rate_id (PK)&lt;br/&gt;from_currency_code (FK)&lt;br/&gt;to_currency_code (FK)&lt;br/&gt;rate&lt;br/&gt;as_of&lt;br/&gt;source" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="460" y="310" width="320" height="190" as="geometry" />
+        </mxCell>
+
+        <mxCell id="order" value="&lt;b&gt;EXCHANGE_ORDER&lt;/b&gt;&lt;br/&gt;order_id (PK)&lt;br/&gt;customer_id (FK)&lt;br/&gt;sell_currency_code (FK)&lt;br/&gt;buy_currency_code (FK)&lt;br/&gt;sell_amount&lt;br/&gt;buy_amount_est&lt;br/&gt;status&lt;br/&gt;created_at" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="860" y="70" width="360" height="220" as="geometry" />
+        </mxCell>
+
+        <mxCell id="exec" value="&lt;b&gt;ORDER_EXECUTION&lt;/b&gt;&lt;br/&gt;execution_id (PK)&lt;br/&gt;order_id (FK)&lt;br/&gt;rate_id (FK)&lt;br/&gt;executed_sell_amount&lt;br/&gt;executed_buy_amount&lt;br/&gt;executed_at" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="860" y="340" width="360" height="200" as="geometry" />
+        </mxCell>
+
+        <mxCell id="payment" value="&lt;b&gt;PAYMENT&lt;/b&gt;&lt;br/&gt;payment_id (PK)&lt;br/&gt;order_id (FK)&lt;br/&gt;method&lt;br/&gt;provider_ref&lt;br/&gt;amount&lt;br/&gt;currency_code (FK)&lt;br/&gt;status&lt;br/&gt;created_at" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="860" y="580" width="360" height="220" as="geometry" />
+        </mxCell>
+
+        <!-- Relationships -->
+        <mxCell id="r1" value="1:N" style="endArrow=block;endFill=1;html=1;" edge="1" parent="1" source="customer" target="account">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="r2" value="1:N" style="endArrow=block;endFill=1;html=1;" edge="1" parent="1" source="customer" target="order">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="r3" value="1:N" style="endArrow=block;endFill=1;html=1;" edge="1" parent="1" source="currency" target="account">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="r4" value="1:N" style="endArrow=block;endFill=1;html=1;" edge="1" parent="1" source="currency" target="rate">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="r5" value="1:N" style="endArrow=block;endFill=1;html=1;" edge="1" parent="1" source="order" target="exec">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="r6" value="1:N" style="endArrow=block;endFill=1;html=1;" edge="1" parent="1" source="rate" target="exec">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="r7" value="1:N" style="endArrow=block;endFill=1;html=1;" edge="1" parent="1" source="order" target="payment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="r8" value="1:N" style="endArrow=block;endFill=1;html=1;" edge="1" parent="1" source="currency" target="payment">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="note" value="Money Exchange ER (>=5 entities, each >=5 attributes)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="460" y="10" width="420" height="50" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

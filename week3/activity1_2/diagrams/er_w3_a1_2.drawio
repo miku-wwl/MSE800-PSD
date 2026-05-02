@@ -1,0 +1,47 @@
+<mxfile host="app.diagrams.net" modified="2026-05-03T00:00:00.000Z" agent="GitHub Copilot" version="24.7.8" type="device">
+  <diagram id="w3a12" name="Page-1">
+    <mxGraphModel dx="1080" dy="720" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- LECTURER -->
+        <mxCell id="lect" value="&lt;b&gt;LECTURER&lt;/b&gt;&lt;br/&gt;lecturer_id (PK)&lt;br/&gt;full_name&lt;br/&gt;email&lt;br/&gt;hire_date&lt;br/&gt;office_room&lt;br/&gt;manager_lecturer_id (FK - self)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="60" y="70" width="310" height="200" as="geometry" />
+        </mxCell>
+
+        <!-- STUDENT -->
+        <mxCell id="student" value="&lt;b&gt;STUDENT&lt;/b&gt;&lt;br/&gt;student_id (PK)&lt;br/&gt;first_name&lt;br/&gt;last_name&lt;br/&gt;email&lt;br/&gt;date_of_birth&lt;br/&gt;created_at" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="60" y="360" width="310" height="190" as="geometry" />
+        </mxCell>
+
+        <!-- COURSE -->
+        <mxCell id="course" value="&lt;b&gt;COURSE&lt;/b&gt;&lt;br/&gt;course_id (PK)&lt;br/&gt;course_code&lt;br/&gt;course_name&lt;br/&gt;credits&lt;br/&gt;lecturer_id (FK)&lt;br/&gt;is_active" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="720" y="70" width="300" height="200" as="geometry" />
+        </mxCell>
+
+        <!-- ENROLLMENT -->
+        <mxCell id="enroll" value="&lt;b&gt;ENROLLMENT&lt;/b&gt;&lt;br/&gt;enrollment_id (PK)&lt;br/&gt;student_id (FK)&lt;br/&gt;course_id (FK)&lt;br/&gt;enrolled_on&lt;br/&gt;status&lt;br/&gt;grade" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;" vertex="1" parent="1">
+          <mxGeometry x="720" y="360" width="300" height="200" as="geometry" />
+        </mxCell>
+
+        <!-- Relationships -->
+        <mxCell id="e1" value="1:N" style="endArrow=block;endFill=1;html=1;" edge="1" parent="1" source="lect" target="course">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e2" value="1:N" style="endArrow=block;endFill=1;html=1;" edge="1" parent="1" source="student" target="enroll">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e3" value="1:N" style="endArrow=block;endFill=1;html=1;" edge="1" parent="1" source="course" target="enroll">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="note" value="新增实体 LECTURER，包含 PK 与自关联 FK (manager_lecturer_id)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="420" y="20" width="280" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

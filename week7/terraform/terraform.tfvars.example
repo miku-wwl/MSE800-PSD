@@ -1,0 +1,9 @@
+location            = "eastasia"
+resource_group_name = "rg-week7-demo"
+name_prefix         = "week7-demo"
+vm_size             = "Standard_B1s"
+admin_username      = "azureuser"
+ssh_public_key      = "ssh-rsa REPLACE_ME"
+repo_url            = "https://github.com/your-org/your-repo.git"
+repo_branch         = "main"
+app_port            = 5000

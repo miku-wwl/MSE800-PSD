@@ -1,0 +1,29 @@
+```mermaid
+flowchart LR
+  Admin[Admin]
+  Compliance[Compliance Officer]
+  Rate[Rate Provider]
+  Pay[Payment Provider]
+
+  subgraph System[Money Exchange Application]
+    UA1((Manage Currency List))
+    UA2((Maintain Exchange Rates))
+    UA3((Review / Approve KYC))
+    UA4((Monitor Orders & Exceptions))
+    UA5((Handle Payment Issues / Reconcile))
+    UA6((Generate Reports / Audit Logs))
+  end
+
+  Admin --> UA1
+  Admin --> UA2
+  Admin --> UA4
+  Admin --> UA5
+  Admin --> UA6
+
+  Compliance --> UA3
+  Compliance --> UA4
+  Compliance --> UA6
+
+  Rate --> UA2
+  Pay --> UA5
+```

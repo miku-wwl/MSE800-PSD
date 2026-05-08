@@ -1,0 +1,36 @@
+```mermaid
+flowchart LR
+  %% Actors
+  Customer[Customer]
+  Pay[Payment Provider]
+  Rate[Rate Provider]
+  Notify[Notification Service]
+
+  %% System boundary
+  subgraph System[Money Exchange Application]
+    UC1((Register / Sign in))
+    UC2((Complete KYC))
+    UC3((Manage Accounts / Wallet))
+    UC4((View Exchange Rates))
+    UC5((Create Exchange Order))
+    UC6((Confirm & Pay / Settle))
+    UC7((Track Order Status))
+    UC8((Cancel Order))
+  end
+
+  Customer --> UC1
+  Customer --> UC2
+  Customer --> UC3
+  Customer --> UC4
+  Customer --> UC5
+  Customer --> UC6
+  Customer --> UC7
+  Customer --> UC8
+
+  Rate --> UC4
+  Rate --> UC5
+  Pay --> UC6
+  Notify --> UC6
+  Notify --> UC7
+  Notify --> UC8
+```

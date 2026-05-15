@@ -1,103 +1,103 @@
-# 动物园管理系统 - 装饰器实现
+# Zoo Admin System - Decorator Implementation
 
-## 项目简介
+## Project Overview
 
-这是一个简单的动物园管理系统，展示如何使用 **Python 装饰器** 实现：
-- ✅ **权限控制** - 只有管理员才能执行某些操作
-- 📋 **操作日志** - 记录每次操作的时间
+A simple zoo admin system demonstrating how to use **Python decorators** to implement:
+- ✅ **Access Control** - Only admins can execute certain operations
+- 📋 **Action Logging** - Record timestamp of each operation
 
-## 项目结构
+## Project Structure
 
 ```
 zoo_admin_project/
-├── decorators.py    # 装饰器定义
-├── admin.py         # 管理功能
-├── main.py          # 入口程序
-└── README.md        # 说明文档
+├── decorators.py    # Decorator definitions
+├── admin.py         # Admin functions
+├── main.py          # Entry point
+└── README.md        # Documentation
 ```
 
-## 核心概念
+## Core Concepts
 
-### 1. `@admin_required` 装饰器
-检查用户是否是管理员，只有管理员才能执行被装饰的函数。
+### 1. `@admin_required` Decorator
+Checks if user is admin before executing the decorated function.
 
 ```python
 @admin_required
 def add_animal(user, name, count):
-    # 只有管理员才能执行
+    # Only admin can execute this
     pass
 ```
 
-### 2. `@log_action` 装饰器
-自动记录函数的执行时间。
+### 2. `@log_action` Decorator
+Automatically logs function execution with timestamp.
 
 ```python
 @log_action
 def view_animals():
-    # 执行时会自动打印时间戳
+    # Automatically prints timestamp when executed
     pass
 ```
 
-## 装饰器堆叠
+## Decorator Stacking
 
-函数可以使用多个装饰器：
+Functions can use multiple decorators:
 
 ```python
-@admin_required  # 第2个执行：检查权限
-@log_action      # 第1个执行：记录日志
+@admin_required  # Executed 2nd: check permission
+@log_action      # Executed 1st: log action
 def add_animal(user, name, count):
     ...
 ```
 
-**执行顺序：** 从下到上
+**Execution order:** Bottom to top
 
-## 运行程序
+## Running the Program
 
 ```bash
 python main.py
 ```
 
-## 输出示例
+## Output Example
 
 ```
-🦁 欢迎来到动物园管理系统 🦁
+🦁 Welcome to Zoo Admin System 🦁
 
-=== 演示1：查看所有动物 ===
-【view_animals】 执行于 10:15:30
-🐾 动物库存：
-   狮子: 3 只
-   大象: 2 只
+=== Demo 1: View all animals ===
+[view_animals] executed at 10:15:30
+🐾 Animal Inventory:
+   Lion: 3
+   Elephant: 2
    ...
-【view_animals】 完成✓
+[view_animals] completed ✓
 
-=== 演示2：管理员添加动物 ===
-【add_animal】 执行于 10:15:31
-✓ 管理员 张三 验证通过
-🦁 成功添加 2 只狮子
-【add_animal】 完成✓
+=== Demo 2: Admin adds animals ===
+[add_animal] executed at 10:15:31
+✓ Admin John verified
+🦁 Successfully added 2 Lion(s)
+[add_animal] completed ✓
 ```
 
-## 关键要点
+## Key Points
 
-| 点 | 说明 |
-|----|------|
-| **装饰器用途** | 添加额外功能而不改变原函数代码 |
-| **@admin_required** | 权限验证 |
-| **@log_action** | 操作记录 |
-| **堆叠使用** | 多个装饰器可以组合 |
-| **代码重用** | 避免重复写验证和日志代码 |
+| Point | Explanation |
+|-------|-------------|
+| **Decorator Purpose** | Add functionality without changing original function |
+| **@admin_required** | Verify admin privileges |
+| **@log_action** | Record operation logs |
+| **Stacking** | Multiple decorators can be combined |
+| **Code Reuse** | Avoid repeating verification and logging code |
 
-## 装饰器工作原理
+## How Decorators Work
 
 ```python
 def decorator(func):
     def wrapper(*args, **kwargs):
-        # 函数执行前
-        result = func(*args, **kwargs)  # 执行原函数
-        # 函数执行后
+        # Before function execution
+        result = func(*args, **kwargs)  # Execute original function
+        # After function execution
         return result
     return wrapper
 ```
 
-装饰器本质上是一个**函数包装器**，可以在原函数执行前后添加代码。
+A decorator is essentially a **function wrapper** that adds code before and after the original function executes.
 

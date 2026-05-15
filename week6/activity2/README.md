@@ -1,40 +1,40 @@
-# Week 6 - Activity 2：动物园管理系统
+# Week 6 - Activity 2: Zoo Admin System
 
-## 简介
+## Overview
 
-一个简单的动物园管理系统，使用 Python **装饰器** 实现权限控制和操作日志。
+A simple zoo admin system using Python **decorators** to implement access control and operation logging.
 
-## 核心装饰器
+## Core Decorators
 
-1. **`@admin_required`** - 只有管理员才能执行该函数
-2. **`@log_action`** - 自动记录函数的执行时间
+1. **`@admin_required`** - Only admin can execute the function
+2. **`@log_action`** - Automatically log function execution time
 
-## 快速运行
+## Quick Start
 
 ```bash
 cd zoo_admin_project
 python main.py
 ```
 
-## 输出内容
+## Output
 
-- ✅ 管理员成功操作（添加、删除动物）
-- ❌ 游客被拒绝访问
-- 📋 每个操作都有时间戳日志
+- ✅ Successful admin operations (add/remove animals)
+- ❌ Guest access denied
+- 📋 Timestamp logging for each operation
 
-## 装饰器堆叠
+## Decorator Stacking
 
 ```python
-@admin_required  # 第2个：检查权限
-@log_action      # 第1个：记录日志
+@admin_required  # 2nd: check permission
+@log_action      # 1st: log action
 def add_animal(user, name, count):
     ...
 ```
 
-## 文件说明
+## Files
 
-- `decorators.py` - 装饰器定义
-- `admin.py` - 管理功能
-- `main.py` - 演示程序
-- `README.md` - 详细文档
+- `decorators.py` - Decorator definitions
+- `admin.py` - Admin functions
+- `main.py` - Demo program
+- `README.md` - Detailed documentation
 

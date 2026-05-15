@@ -2,33 +2,33 @@ from admin import add_animal, remove_animal, view_animals, login
 
 
 def main():
-    print("🦁 欢迎来到动物园管理系统 🦁\n")
+    print("🦁 Welcome to Zoo Admin System 🦁\n")
     
-    # 管理员账户
-    admin_user = {"name": "张三", "is_admin": True}
-    guest_user = {"name": "游客", "is_admin": False}
+    # Admin and guest accounts
+    admin_user = {"name": "John", "is_admin": True}
+    guest_user = {"name": "Guest", "is_admin": False}
     
-    # 演示1：查看所有动物
-    print("=== 演示1：查看所有动物 ===")
+    # Demo 1: View all animals
+    print("=== Demo 1: View all animals ===")
     view_animals()
     
-    # 演示2：管理员添加动物
-    print("\n=== 演示2：管理员添加动物 ===")
-    add_animal(admin_user, "狮子", 2)
+    # Demo 2: Admin adds animals
+    print("\n=== Demo 2: Admin adds animals ===")
+    add_animal(admin_user, "Lion", 2)
     
-    # 演示3：删除动物
-    print("\n=== 演示3：删除动物 ===")
-    remove_animal(admin_user, "企鹅", 3)
+    # Demo 3: Remove animals
+    print("\n=== Demo 3: Remove animals ===")
+    remove_animal(admin_user, "Penguin", 3)
     
-    # 演示4：查看更新后的库存
-    print("\n=== 演示4：查看更新后的库存 ===")
+    # Demo 4: View updated inventory
+    print("\n=== Demo 4: View updated inventory ===")
     view_animals()
     
-    # 演示5：未授权访问（游客试图添加动物）
-    print("\n=== 演示5：未授权访问 ===")
-    add_animal(guest_user, "老虎", 1)
+    # Demo 5: Unauthorized access (guest tries to add animals)
+    print("\n=== Demo 5: Unauthorized access ===")
+    add_animal(guest_user, "Tiger", 1)
     
-    print("\n✅ 演示完成！")
+    print("\n✅ Demo completed!")
 
 
 if __name__ == "__main__":
